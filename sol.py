@@ -19,7 +19,6 @@ def compress_lz77(s: str) -> list[Token]:
         best_offset = 0
         best_length = 0
 
-        # فحص جميع بدايات التطابق الممكنة داخل نافذة البحث السابقة
         for start in range(pos - 1, -1, -1):
             length = 0
 
@@ -50,7 +49,6 @@ def decompress_lz77(tokens: list[Token]) -> str:
     out: list[str] = []
 
     for t in tokens:
-        # نسخ المحارف السابقة اعتماداً على الـ offset
         for _ in range(t.length):
             out.append(out[len(out) - t.offset])
 
